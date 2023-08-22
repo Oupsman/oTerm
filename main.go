@@ -33,13 +33,13 @@ func NewTerm() *terminal.Terminal {
 func main() {
 	oTerm := app.New()
 	w := oTerm.NewWindow("oTerm")
-	appLayout := layout.NewGridLayout(2)
+	appLayout := layout.NewGridLayoutWithRows(2)
 	appContent := container.New(appLayout)
 	Tabs = container.NewAppTabs()
 	TabCount = 1
 	newTabButton := widget.NewButton("New tab", NewTab)
 	profilesButton := widget.NewButton("Profiles", EditProfiles)
-	leftColumn := container.NewGridWithRows(2, newTabButton, profilesButton)
+	leftColumn := container.NewGridWithColumns(2, newTabButton, profilesButton)
 	appContent.Add(leftColumn)
 	Tabs.Append(container.NewTabItem("Local Terminal 1", NewTerm()))
 	Tabs.SetTabLocation(container.TabLocationTop)
